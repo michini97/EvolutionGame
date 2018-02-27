@@ -5,7 +5,6 @@ using UnityEngine;
 public class whiteCollider : MonoBehaviour
 {
 
-    public GameObject gameObj;
     public string color;
     public int ballAmount = 0;
     public GameObject something;
@@ -14,17 +13,27 @@ public class whiteCollider : MonoBehaviour
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
+
     }
 
     void OnCollisionEnter(Collision col)
     {
-
-        if (col.gameObject.tag == gameObject.tag)
+        BallFollowTarget collideInfo = col.gameObject.GetComponent<BallFollowTarget>();
+        if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
         {
             lvlman.white++;
-            Debug.Log("white: " + lvlman.white);
-        }
+            
+            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            ps.Play();
+            collideInfo.collided();
 
-        Destroy(col.gameObject);
+            Debug.Log("white: " + lvlman.white);
+            Destroy(col.gameObject, 0.2f);
+
+        }
+        else if (col.gameObject.tag != gameObject.tag)
+        {
+            Destroy(col.gameObject);
+        }
     }
 }
