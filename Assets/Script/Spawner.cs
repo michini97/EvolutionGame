@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour {
     public float spawnLeastWait;
     public int startWait;
     public bool stop;
+
+    private Pauser pause;
     
 
     int randEnemy;
@@ -18,12 +20,20 @@ public class Spawner : MonoBehaviour {
 	void Start ()
     {
         StartCoroutine(waitSpawner());
+        pause = GameObject.Find("Pause").GetComponent<Pauser>();
 	}
 	
 
 	void Update ()
     {
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait);	
+        if (pause.IsActive())
+        {
+            stop = true;
+        } else
+        {
+            stop = false;
+        }
 
 	}
 
