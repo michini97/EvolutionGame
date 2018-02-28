@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pauser : MonoBehaviour {
 
     private static Pauser pause;
     private Canvas canvas;
     private bool active = false;
+    private int startScreen = 5;
 
     private void Awake()
     {
@@ -57,5 +59,11 @@ public class Pauser : MonoBehaviour {
     public bool IsActive()
     {
         return active;
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(startScreen);
+        ResumeGame();
     }
 }

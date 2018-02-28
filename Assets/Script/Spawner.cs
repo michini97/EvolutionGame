@@ -11,30 +11,15 @@ public class Spawner : MonoBehaviour {
     public float spawnLeastWait;
     public int startWait;
     public bool stop;
-<<<<<<< HEAD
-
     private Pauser pause;
-    
-=======
-    //public Transform Explosion;
-    //ParticleSystem ps;
-
->>>>>>> refs/remotes/origin/master
 
     int randEnemy;
 
 	void Start ()
     {
         StartCoroutine(waitSpawner());
-<<<<<<< HEAD
         pause = GameObject.Find("Pause").GetComponent<Pauser>();
 	}
-=======
-        //ps = Explosion.GetComponent<ParticleSystem>();
-        //var em = ps.emission;
-        //em.enabled = false;
-    }
->>>>>>> refs/remotes/origin/master
 	
 
 	void Update ()
@@ -61,10 +46,6 @@ public class Spawner : MonoBehaviour {
             Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(-spawnValues.z, spawnValues.z));
         
             Instantiate(enemies[randEnemy], spawnPosition + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
-
-            //ParticleSystem ps = enemies[randEnemy].GetComponent<ParticleSystem>();
-            //var em = ps.emission;
-            //em.enabled = false;
 
             yield return new WaitForSeconds(spawnWait);
 
