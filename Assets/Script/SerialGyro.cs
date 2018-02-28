@@ -77,14 +77,14 @@ public class SerialGyro : MonoBehaviour {
         }
     }
 
-    void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 100, 100), "Raw Yaw:" + yaw.ToString());
-        GUI.Label(new Rect(100, 0, 100, 100), "Raw Pitch:" + pitch.ToString());
-        GUI.Label(new Rect(200, 0, 100, 100), "Raw Roll:" + roll.ToString());
+    //void OnGUI()
+    //{
+    //    GUI.Label(new Rect(0, 0, 100, 100), "Raw Yaw:" + yaw.ToString());
+    //    GUI.Label(new Rect(100, 0, 100, 100), "Raw Pitch:" + pitch.ToString());
+    //    GUI.Label(new Rect(200, 0, 100, 100), "Raw Roll:" + roll.ToString());
 
-        GUI.Label(new Rect(0, 20, 100, 100), "Yaw:" + yaw_degrees.ToString());
-        GUI.Label(new Rect(100, 20, 100, 100), "Pitch:" + pitch_degrees.ToString());
-        GUI.Label(new Rect(200, 20, 100, 100), "Roll:" + roll_degrees.ToString());
-    }
+    //    GUI.Label(new Rect(0, 20, 100, 100), "Yaw:" + yaw_degrees.ToString());
+    //    GUI.Label(new Rect(100, 20, 100, 100), "Pitch:" + pitch_degrees.ToString());
+    //    GUI.Label(new Rect(200, 20, 100, 100), "Roll:" + roll_degrees.ToString());
+    //}
 }
