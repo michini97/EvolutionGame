@@ -18,13 +18,23 @@ public class yellowCollider : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        BallFollowTarget collideInfo = col.gameObject.GetComponent<BallFollowTarget>();
+        if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
 
-        if (col.gameObject.tag == gameObject.tag)
+           
         {
             lvlman.yellow++;
             Debug.Log("yellow: " + lvlman.yellow);
-        }
 
-        Destroy(col.gameObject);
+            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            ps.Play();
+            collideInfo.collided();
+            Destroy(col.gameObject, 0.2f);
+
+        }
+        else if (col.gameObject.tag != gameObject.tag)
+        {
+            Destroy(col.gameObject);
+        }
     }
 }
