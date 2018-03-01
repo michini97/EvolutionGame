@@ -140,31 +140,25 @@ public class LevelManager : MonoBehaviour {
     {
         switch (currentLevel)
         {
-            case 0:
+            case 1:
                 if(white >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
 
-            case 1:
+            case 2:
                 if(white >= 5 && grey >= 5)
                 {
                     //SceneManager.LoadScene(levels[currentLevel + 1], LoadSceneMode.Additive);
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
-            case 2:
+            case 3:
                 if (white >= 5 && grey >= 5 && red >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
 
-                }
-                break;
-            case 3:
-                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5)
-                {
-                    SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
             case 4:
@@ -174,12 +168,18 @@ public class LevelManager : MonoBehaviour {
                 }
                 break;
             case 5:
-                if (white >= 1 && grey >= 1 && red >= 1 && blue >= 1 && green >= 1) 
+                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
             case 6:
+                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5) 
+                {
+                    SceneManager.LoadScene(currentLevel + 1);
+                }
+                break;
+            case 7:
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5 && yellow >= 5)
                 {
                     //SceneManager.LoadScene(currentLevel + 1);
