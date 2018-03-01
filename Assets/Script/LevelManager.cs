@@ -32,8 +32,7 @@ public class LevelManager : MonoBehaviour {
     public int white = 0;
     public int yellow = 0;
 
-
-
+    private static LevelManager lvlMan;
 
     private void Start()
     {
