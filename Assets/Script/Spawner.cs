@@ -11,19 +11,27 @@ public class Spawner : MonoBehaviour {
     public float spawnLeastWait;
     public int startWait;
     public bool stop;
-    
+    private Pauser pause;
 
     int randEnemy;
 
 	void Start ()
     {
         StartCoroutine(waitSpawner());
+        pause = GameObject.Find("Pause").GetComponent<Pauser>();
 	}
 	
 
 	void Update ()
     {
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait);	
+        if (pause.IsActive())
+        {
+            stop = true;
+        } else
+        {
+            stop = false;
+        }
 
 	}
 
@@ -36,7 +44,7 @@ public class Spawner : MonoBehaviour {
             randEnemy = Random.Range(0, enemies.Length); //picks an enemy nr between 0 and 2
 
             Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(-spawnValues.z, spawnValues.z));
-
+        
             Instantiate(enemies[randEnemy], spawnPosition + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
 
             yield return new WaitForSeconds(spawnWait);
