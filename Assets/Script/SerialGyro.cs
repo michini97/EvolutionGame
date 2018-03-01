@@ -7,6 +7,7 @@ public class SerialGyro : MonoBehaviour {
     private float yaw = 0, pitch = 0, roll = 0;
     private float yaw_degrees = 0, pitch_degrees = 0, roll_degrees = 0;
     private SerialPort serial;
+    public bool debug;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +26,7 @@ public class SerialGyro : MonoBehaviour {
         serial.Open();
 
         LevelManager lvlman = GameObject.Find("Planet").GetComponent<LevelManager>();
-        if (lvlman.currentLevel != 0)
+        if (lvlman.currentLevel != 0 && !debug)
         {
             transform.localRotation = CubeInfo.cubeInfo.getRotation();
         }
@@ -73,7 +74,10 @@ public class SerialGyro : MonoBehaviour {
             Quaternion fromRotation = transform.localRotation;
             Quaternion toRotation = Quaternion.Euler(pitch_degrees, yaw_degrees, roll_degrees);
             transform.localRotation = Quaternion.Slerp(fromRotation, toRotation, Time.deltaTime * 10);
-            CubeInfo.cubeInfo.setRotation(transform.localRotation);
+            if (!debug)
+            {
+                CubeInfo.cubeInfo.setRotation(transform.localRotation);
+            }
         }
     }
 
