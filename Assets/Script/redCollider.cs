@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class redCollider : MonoBehaviour {
 
@@ -20,7 +21,10 @@ public class redCollider : MonoBehaviour {
         BallFollowTarget collideInfo = col.gameObject.GetComponent<BallFollowTarget>();
         if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
         {
-            lvlman.red++;
+            if (lvlman.red < lvlman.GetRedMax())
+            {
+                lvlman.red++;
+            }
             Debug.Log("red: " + lvlman.red);
 
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();

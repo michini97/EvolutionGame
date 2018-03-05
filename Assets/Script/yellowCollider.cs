@@ -23,7 +23,7 @@ public class yellowCollider : MonoBehaviour
 
            
         {
-            lvlman.yellow++;
+            if(lvlman.yellow < lvlman.GetLifeMax())lvlman.yellow++;
             Debug.Log("yellow: " + lvlman.yellow);
 
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
