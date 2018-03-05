@@ -22,7 +22,10 @@ public class greenCollider : MonoBehaviour
         if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
         {
 
-            lvlman.green++;
+            if (lvlman.green < lvlman.GetGreenMax())
+            {
+                lvlman.green++;
+            }
             Debug.Log("green: " + lvlman.green);
 
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
