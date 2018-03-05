@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class greyCollider : MonoBehaviour {
 
@@ -15,7 +16,7 @@ public class greyCollider : MonoBehaviour {
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
-        planet = GameObject.Find("Planet");
+        //planet = GameObject.Find("Planet");
     }
 
     void OnCollisionEnter(Collision col)
@@ -23,9 +24,11 @@ public class greyCollider : MonoBehaviour {
         BallFollowTarget collideInfo = col.gameObject.GetComponent<BallFollowTarget>();
         if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
         {
-            
-            lvlman.grey++;
-            Debug.Log("grey: " + lvlman.grey);
+
+            if (lvlman.grey < lvlman.GetGreyMax())
+            {
+                lvlman.grey++;
+            }
 
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
             ps.Play();

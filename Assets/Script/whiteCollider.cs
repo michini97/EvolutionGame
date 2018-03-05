@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class whiteCollider : MonoBehaviour
 {
@@ -21,8 +22,12 @@ public class whiteCollider : MonoBehaviour
         BallFollowTarget collideInfo = col.gameObject.GetComponent<BallFollowTarget>();
         if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
         {
-            lvlman.white++;
-            
+
+            if (lvlman.white < lvlman.GetWhiteMax())
+            {
+                lvlman.white++;
+            }
+
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
             ps.Play();
             collideInfo.collided();

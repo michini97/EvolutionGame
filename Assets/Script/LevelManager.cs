@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
 
@@ -32,12 +33,102 @@ public class LevelManager : MonoBehaviour {
     public int white = 0;
     public int yellow = 0;
 
+    //white progress bar
+    private float WhiteProg;
+    private Image WhiteImage;
+    private int WhiteMax;
+
+    //Grey progress bar
+    private float GreyProg;
+    private Image GreyImage;
+    private int GreyMax;
+
+    //Red progress bar
+    private float RedProg;
+    private Image RedImage;
+    private int RedMax;
+
+    //Blue progress bar
+    private float BlueProg;
+    private Image BlueImage;
+    private int BlueMax;
+
+    //Green progress bar
+    private float GreenProg;
+    private Image GreenImage;
+    private int GreenMax;
+
+    //Life progress bar
+    private float LifeProg;
+    private Image LifeImage;
+    private int LifeMax;
+
     private static LevelManager lvlMan;
+
+    public float GetAmount(string color)
+    {
+        float result = 0f;
+        switch (color)
+        {
+            case "white":
+                result = white;
+                break;
+
+            case "grey":
+                result = grey;
+                break;
+
+            case "red":
+                result = red;
+                break;
+
+            case "blue":
+                result = blue;
+                break;
+
+            case "green":
+                result = green;
+                break;
+
+            case "yellow":
+                result = yellow;
+                break;
+        }
+
+        return result;
+
+    } 
 
     private void Start()
     {
-        colors = new string[] { "grey" , "blue" , "red" , "green" , "white" , "yellow" };
-        levels = new string[] { "levelOne" , "levelTwo"};
+        colors = new string[] { "grey", "blue", "red", "green", "white", "yellow" };
+        levels = new string[] { "levelOne", "levelTwo" };
+
+        switch (currentLevel)
+        {
+            case 0:
+                WhiteMax = 5;
+                break;
+
+            case 1:
+                WhiteMax = 5;
+                GreyMax = 5;
+                break;
+
+            case 2:
+                WhiteMax = 5;
+                GreyMax = 5;
+                RedMax = 5;
+                break;
+
+            case 3:
+                WhiteMax = 5;
+                GreyMax = 5;
+                RedMax = 5;
+                BlueMax = 5;
+                break;
+
+        }
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -175,5 +266,40 @@ public class LevelManager : MonoBehaviour {
                 }
                 break;
         }
+    }
+
+    public int GetWhiteMax()
+    {
+        return WhiteMax;
+    }
+
+    public int GetGreyMax()
+    {
+        return GreyMax;
+    }
+
+    public int GetRedMax()
+    {
+        return RedMax;
+    }
+
+   public int GetBlueMax()
+    {
+        return BlueMax;
+    }
+
+    public int GetGreenMax()
+    {
+        return GreenMax;
+    }
+
+   public int GetLifeMax()
+    {
+        return LifeMax;
+    }
+
+    void UpdateBar()
+    {
+
     }
 }
