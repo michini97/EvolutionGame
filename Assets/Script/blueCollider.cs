@@ -23,7 +23,10 @@ public class blueCollider : MonoBehaviour
 
             
         {
-            lvlman.blue++;
+            if (lvlman.blue < lvlman.GetBlueMax())
+            {
+                lvlman.blue++;
+            }
             Debug.Log("blue: " + lvlman.blue);
 
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
