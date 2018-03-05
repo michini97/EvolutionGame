@@ -97,6 +97,7 @@ public class LevelManager : MonoBehaviour {
 
         return result;
 
+<<<<<<< HEAD
     } 
 
     private void Start()
@@ -111,21 +112,65 @@ public class LevelManager : MonoBehaviour {
                 break;
 
             case 1:
+=======
+    }
+
+    private void Start()
+    {
+        colors = new string[] { "grey" , "blue" , "red" , "green" , "white" , "yellow" };
+        levels = new string[] { "levelOne" , "levelTwo"};
+
+         switch (currentLevel)
+        {
+            case 1:
+                WhiteMax = 5;
+                break;
+
+            case 2:
+>>>>>>> master
                 WhiteMax = 5;
                 GreyMax = 5;
                 break;
 
+<<<<<<< HEAD
             case 2:
+=======
+            case 3:
+>>>>>>> master
                 WhiteMax = 5;
                 GreyMax = 5;
                 RedMax = 5;
                 break;
 
+<<<<<<< HEAD
             case 3:
+=======
+            case 4:
                 WhiteMax = 5;
                 GreyMax = 5;
                 RedMax = 5;
                 BlueMax = 5;
+                break;
+
+            case 5:
+                WhiteMax = 5;
+                GreyMax = 5;
+                RedMax = 5;
+                BlueMax = 5;
+                GreenMax = 5;
+                break;
+
+            case 6:
+>>>>>>> master
+                WhiteMax = 5;
+                GreyMax = 5;
+                RedMax = 5;
+                BlueMax = 5;
+<<<<<<< HEAD
+=======
+                GreenMax = 5;
+                LifeMax = 5;
+>>>>>>> master
                 break;
 
         }
@@ -231,35 +276,47 @@ public class LevelManager : MonoBehaviour {
     {
         switch (currentLevel)
         {
-            case 0:
+            case 1:
                 if(white >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
 
-            case 1:
+            case 2:
                 if(white >= 5 && grey >= 5)
                 {
                     //SceneManager.LoadScene(levels[currentLevel + 1], LoadSceneMode.Additive);
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
-            case 2:
+            case 3:
                 if (white >= 5 && grey >= 5 && red >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
 
                 }
                 break;
-            case 3:
+            case 4:
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
-            case 4:
+            case 5:
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5)
+                {
+                    SceneManager.LoadScene(currentLevel + 1);
+                }
+                break;
+            case 6:
+                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5) 
+                {
+                    SceneManager.LoadScene(currentLevel + 1);
+                }
+                break;
+            case 7:
+                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5 && yellow >= 5)
                 {
                     //SceneManager.LoadScene(currentLevel + 1);
                     Debug.Log("You Win");
@@ -283,7 +340,11 @@ public class LevelManager : MonoBehaviour {
         return RedMax;
     }
 
+<<<<<<< HEAD
    public int GetBlueMax()
+=======
+    public int GetBlueMax()
+>>>>>>> master
     {
         return BlueMax;
     }
@@ -293,7 +354,11 @@ public class LevelManager : MonoBehaviour {
         return GreenMax;
     }
 
+<<<<<<< HEAD
    public int GetLifeMax()
+=======
+    public int GetLifeMax()
+>>>>>>> master
     {
         return LifeMax;
     }
@@ -303,3 +368,4 @@ public class LevelManager : MonoBehaviour {
 
     }
 }
+

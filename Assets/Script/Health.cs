@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+<<<<<<< HEAD
 public class Health: MonoBehaviour
+=======
+public class Health : MonoBehaviour
+>>>>>>> master
 {
     public float BallProg;
     public Image healthImage;
@@ -13,3 +17,7 @@ public class Health: MonoBehaviour
         healthImage.fillAmount = (BallProg / 5);
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

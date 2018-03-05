@@ -63,7 +63,7 @@ public class Pauser : MonoBehaviour {
 
     public void Quit()
     {
-        SceneManager.LoadScene(startScreen);
+        SceneManager.LoadScene("StartPage");
         ResumeGame();
     }
 }

@@ -29,6 +29,11 @@ public class greyCollider : MonoBehaviour {
             {
                 lvlman.grey++;
             }
+<<<<<<< HEAD
+=======
+
+            Debug.Log("grey: " + lvlman.grey);
+>>>>>>> master
 
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
             ps.Play();

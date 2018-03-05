@@ -22,7 +22,10 @@ public class whiteCollider : MonoBehaviour
         BallFollowTarget collideInfo = col.gameObject.GetComponent<BallFollowTarget>();
         if (col.gameObject.tag == gameObject.tag && !collideInfo.getCollided())
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             if (lvlman.white < lvlman.GetWhiteMax())
             {
                 lvlman.white++;

@@ -20,20 +20,21 @@ public class Spawner : MonoBehaviour {
         StartCoroutine(waitSpawner());
         pause = GameObject.Find("Pause").GetComponent<Pauser>();
 	}
-	
 
-	void Update ()
+
+    void Update()
     {
-        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);	
+        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
         if (pause.IsActive())
         {
             stop = true;
-        } else
+        }
+        else
         {
             stop = false;
         }
 
-	}
+    }
 
     IEnumerator waitSpawner()
     {
