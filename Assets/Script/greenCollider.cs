@@ -11,9 +11,16 @@ public class greenCollider : MonoBehaviour
     public LevelManager lvlman;
     public GameObject something;
 
+    // Audio
+    private AudioSource src;
+    public AudioClip sound;
+    public AudioClip wrong;
+    private float vol = 1.0f;
+
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
+        src = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision col)
@@ -28,6 +35,8 @@ public class greenCollider : MonoBehaviour
             }
             Debug.Log("green: " + lvlman.green);
 
+            src.PlayOneShot(sound, vol);
+
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
             ps.Play();
             collideInfo.collided();
@@ -35,6 +44,7 @@ public class greenCollider : MonoBehaviour
 
         } else if (col.gameObject.tag != gameObject.tag)
         {
+            src.PlayOneShot(wrong, vol);
             Destroy(col.gameObject);
         }
     }

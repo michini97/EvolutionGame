@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: 28a781ad94f5a4f43aa6abe78c65156f
-timeCreated: 1519226614
+timeCreated: 1520341959
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameObj: {instanceID: 0}
+  - lvlman: {instanceID: 0}
+  - something: {instanceID: 0}
+  - sound: {fileID: 8300000, guid: f95939a8c994be5459b35a0c1bc59220, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
