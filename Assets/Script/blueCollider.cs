@@ -9,11 +9,17 @@ public class blueCollider : MonoBehaviour
     public string color;
     public int ballAmount = 0;
     public GameObject something;
-    public LevelManager lvlman;
+    private LevelManager lvlman;
+
+    // Audio
+    private AudioSource src;
+    public AudioClip sound;
+    private float vol = 1.0f;
 
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
+        src = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision col)
@@ -29,8 +35,11 @@ public class blueCollider : MonoBehaviour
             }
             Debug.Log("blue: " + lvlman.blue);
 
+            src.PlayOneShot(sound, vol);
+
             ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
             ps.Play();
+
             collideInfo.collided();
             Destroy(col.gameObject, 0.2f);
 
