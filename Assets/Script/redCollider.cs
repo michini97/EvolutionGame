@@ -36,10 +36,13 @@ public class redCollider : MonoBehaviour {
 
             src.PlayOneShot(sound, vol);
 
-            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
-            ps.Play();
+            // ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            // ps.Play();
             collideInfo.collided();
-            Destroy(col.gameObject, 0.2f);
+            Object explo = Instantiate(Resources.Load("RedExplosion"), col.gameObject.transform.position, transform.rotation);
+
+            Destroy(col.gameObject);
+            Destroy(explo, 1.1f);
 
         }
         else if (col.gameObject.tag != gameObject.tag)
