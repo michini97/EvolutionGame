@@ -101,6 +101,8 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
+        Text lvlText = GameObject.Find("LevelText").GetComponent<Text>();
+        lvlText.text = "Level " + currentLevel;
         colors = new string[] { "grey" , "blue" , "red" , "green" , "white" , "yellow" };
         levels = new string[] { "levelOne" , "levelTwo"};
 
