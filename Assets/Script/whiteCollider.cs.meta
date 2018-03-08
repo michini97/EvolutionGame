@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: c30a6a69d413eaa4fa49b640a9751ef1
-timeCreated: 1519303666
+timeCreated: 1520343521
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - something: {instanceID: 0}
+  - lvlman: {instanceID: 0}
+  - sound: {fileID: 8300000, guid: 9a6a4b631c9251f4480ebea12866cbb3, type: 3}
+  - wrong: {fileID: 8300000, guid: cdddd301efd294d4191c2faa0f5eefa4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
