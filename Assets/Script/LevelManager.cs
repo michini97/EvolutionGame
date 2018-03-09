@@ -36,32 +36,32 @@ public class LevelManager : MonoBehaviour {
     //white progress bar
     private float WhiteProg;
     private Image WhiteImage;
-    private int WhiteMax;
+    private int WhiteMax = 5;
 
     //Grey progress bar
     private float GreyProg;
     private Image GreyImage;
-    private int GreyMax;
+    private int GreyMax = 5;
 
     //Red progress bar
     private float RedProg;
     private Image RedImage;
-    private int RedMax;
+    private int RedMax = 5;
 
     //Blue progress bar
     private float BlueProg;
     private Image BlueImage;
-    private int BlueMax;
+    private int BlueMax = 5;
 
     //Green progress bar
     private float GreenProg;
     private Image GreenImage;
-    private int GreenMax;
+    private int GreenMax = 5;
 
     //Life progress bar
     private float LifeProg;
     private Image LifeImage;
-    private int LifeMax;
+    private int LifeMax = 5;
 
     private static LevelManager lvlMan;
 
