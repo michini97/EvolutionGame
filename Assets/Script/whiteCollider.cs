@@ -36,12 +36,18 @@ public class whiteCollider : MonoBehaviour
 
             src.PlayOneShot(sound, vol);
 
-            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
-            ps.Play();
+            // Collider collider = col.gameObject.GetComponent<Collider>();
+            // collider.enabled = false;
+
+            // ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            // ps.Play();
+
             collideInfo.collided();
+            Object explo = Instantiate(Resources.Load("WhiteExplosion"), col.gameObject.transform.position, transform.rotation);
 
             Debug.Log("white: " + lvlman.white);
-            Destroy(col.gameObject, 0.2f);
+            Destroy(col.gameObject);
+            Destroy(explo, 1.1f);
 
         }
         else if (col.gameObject.tag != gameObject.tag)
