@@ -73,7 +73,7 @@ public class SerialGyro : MonoBehaviour {
 
             Quaternion fromRotation = transform.localRotation;
             Quaternion toRotation = Quaternion.Euler(pitch_degrees, yaw_degrees, roll_degrees);
-            transform.localRotation = Quaternion.Slerp(fromRotation, toRotation, Time.deltaTime * 10);
+            transform.localRotation = Quaternion.Slerp(fromRotation, toRotation, Time.deltaTime * 100);
             if (!debug)
             {
                 CubeInfo.cubeInfo.setRotation(transform.localRotation);
