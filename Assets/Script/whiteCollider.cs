@@ -11,9 +11,16 @@ public class whiteCollider : MonoBehaviour
     public GameObject something;
     public LevelManager lvlman;
 
+    // Audio
+    private AudioSource src;
+    public AudioClip sound;
+    public AudioClip wrong;
+    private float vol = 1.0f;
+
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
+        src = GetComponent<AudioSource>();
 
     }
 
@@ -31,16 +38,25 @@ public class whiteCollider : MonoBehaviour
                 lvlman.white++;
             }
 
-            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
-            ps.Play();
+            src.PlayOneShot(sound, vol);
+
+            // Collider collider = col.gameObject.GetComponent<Collider>();
+            // collider.enabled = false;
+
+            // ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            // ps.Play();
+
             collideInfo.collided();
+            Object explo = Instantiate(Resources.Load("WhiteExplosion"), col.gameObject.transform.position, transform.rotation);
 
             Debug.Log("white: " + lvlman.white);
-            Destroy(col.gameObject, 0.2f);
+            Destroy(col.gameObject);
+            Destroy(explo, 1.1f);
 
         }
         else if (col.gameObject.tag != gameObject.tag)
         {
+            src.PlayOneShot(wrong, vol);
             Destroy(col.gameObject);
         }
     }

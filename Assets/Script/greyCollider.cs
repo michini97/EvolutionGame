@@ -13,10 +13,21 @@ public class greyCollider : MonoBehaviour {
     public LevelManager lvlman;
     public GameObject planet;
 
+    // Audio
+    private AudioSource src;
+    public AudioClip sound;
+    public AudioClip wrong;
+    private float vol = 1.0f;
+
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
+<<<<<<< HEAD
         //planet = GameObject.Find("Planet");
+=======
+        planet = GameObject.Find("Planet");
+        src = GetComponent<AudioSource>();
+>>>>>>> master
     }
 
     void OnCollisionEnter(Collision col)
@@ -35,14 +46,20 @@ public class greyCollider : MonoBehaviour {
             Debug.Log("grey: " + lvlman.grey);
 >>>>>>> master
 
-            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
-            ps.Play();
+            src.PlayOneShot(sound, vol);
+
+            // ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            // ps.Play();
             collideInfo.collided();
-            Destroy(col.gameObject, 0.2f);
+            Object explo = Instantiate(Resources.Load("GreyExplosion"), col.gameObject.transform.position, transform.rotation);
+
+            Destroy(col.gameObject);
+            Destroy(explo, 1.1f);
 
         }
         else if (col.gameObject.tag != gameObject.tag)
         {
+            src.PlayOneShot(wrong, vol);
             Destroy(col.gameObject);
         }
     }

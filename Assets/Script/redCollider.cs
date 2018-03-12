@@ -11,9 +11,16 @@ public class redCollider : MonoBehaviour {
     public LevelManager lvlman;
     public GameObject something;
 
+    // Audio
+    private AudioSource src;
+    public AudioClip sound;
+    public AudioClip wrong;
+    private float vol = 1.0f;
+
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
+        src = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision col)
@@ -27,14 +34,20 @@ public class redCollider : MonoBehaviour {
             }
             Debug.Log("red: " + lvlman.red);
 
-            ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
-            ps.Play();
+            src.PlayOneShot(sound, vol);
+
+            // ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+            // ps.Play();
             collideInfo.collided();
-            Destroy(col.gameObject, 0.2f);
+            Object explo = Instantiate(Resources.Load("RedExplosion"), col.gameObject.transform.position, transform.rotation);
+
+            Destroy(col.gameObject);
+            Destroy(explo, 1.1f);
 
         }
         else if (col.gameObject.tag != gameObject.tag)
         {
+            src.PlayOneShot(wrong, vol);
             Destroy(col.gameObject);
         }
     }

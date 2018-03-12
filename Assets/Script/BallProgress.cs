@@ -11,7 +11,7 @@ public class BallProgress : MonoBehaviour
 >>>>>>> master
 
     public Image Bar;
-    private int BallAmount = 0;
+    private float BallAmount = 0;
     private LevelManager Lvlman;
 <<<<<<< HEAD
     private string color; 
@@ -39,7 +39,11 @@ public class BallProgress : MonoBehaviour
     void Update()
 >>>>>>> master
     {
-
-        Bar.fillAmount = (Lvlman.GetAmount(color) / 5);
+        BallAmount = Lvlman.GetAmount(color);
+        if (BallAmount <= 0) {
+            Bar.fillAmount = (0.05f);
+        } else {
+            Bar.fillAmount = (Lvlman.GetAmount(color) / 5);
+        }
     }
 }
