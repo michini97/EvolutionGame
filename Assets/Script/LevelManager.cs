@@ -102,7 +102,6 @@ public class LevelManager : MonoBehaviour {
     private void Start()
     {
         Text lvlText = GameObject.Find("LevelText").GetComponent<Text>();
-        lvlText.text = "Level " + currentLevel;
         colors = new string[] { "grey" , "blue" , "red" , "green" , "white" , "yellow" };
         levels = new string[] { "levelOne" , "levelTwo"};
 
@@ -260,7 +259,6 @@ public class LevelManager : MonoBehaviour {
             case 2:
                 if(white >= 5 && grey >= 5)
                 {
-                    //SceneManager.LoadScene(levels[currentLevel + 1], LoadSceneMode.Additive);
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
@@ -278,22 +276,15 @@ public class LevelManager : MonoBehaviour {
                 }
                 break;
             case 5:
-                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5)
+                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
                 }
                 break;
             case 6:
-                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5) 
+                if (white >= 1 && grey >= 1 && red >= 1 && blue >= 1 && green >= 1 && yellow >= 1)
                 {
                     SceneManager.LoadScene(currentLevel + 1);
-                }
-                break;
-            case 7:
-                if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5 && yellow >= 5)
-                {
-                    //SceneManager.LoadScene(currentLevel + 1);
-                    Debug.Log("You Win");
                 }
                 break;
         }

@@ -63,6 +63,7 @@ public class Pauser : MonoBehaviour {
 
     public void Quit()
     {
+        GameObject.Destroy(GameObject.Find("GameMaster"));
         SceneManager.LoadScene("StartPage");
         ResumeGame();
     }
