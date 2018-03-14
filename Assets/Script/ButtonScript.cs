@@ -22,7 +22,7 @@ public class ButtonScript : MonoBehaviour {
 
     public void StartPage()
     {
-        SceneManager.LoadScene("StartPage");
+        SceneManager.LoadScene(0);
     }
 
     public void Instructions()
@@ -33,5 +33,10 @@ public class ButtonScript : MonoBehaviour {
     public void Settings()
     {
         SceneManager.LoadScene("Settings");
+    }
+
+    public void NextLevel() {
+        LevelManager lvlman = GameObject.Find("Planet").GetComponent<LevelManager>();
+        SceneManager.LoadScene(lvlman.GetLevel() + 1);
     }
 }
