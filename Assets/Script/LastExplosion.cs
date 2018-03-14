@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Threading;
 
 public class LastExplosion : MonoBehaviour {
@@ -10,9 +11,9 @@ public class LastExplosion : MonoBehaviour {
     public GameObject red;
     public GameObject grey;
     public GameObject pink;
+    public Text stopTimer;
     // Use this for initialization
     void Start () {
-   
         StartCoroutine(Bombplanet());
         planet = GameObject.Find("Planet");
         green = GameObject.Find("GreenRocket");
@@ -31,7 +32,7 @@ public class LastExplosion : MonoBehaviour {
             Destroy(green);
             Destroy(red);
             Destroy(grey);
-            Destroy(pink);
+            Destroy(pink);            
         }   
     }
 }
