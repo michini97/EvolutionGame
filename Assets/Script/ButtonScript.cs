@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
-		
+	
 	}
 	
 	// Update is called once per frame
@@ -33,5 +34,10 @@ public class ButtonScript : MonoBehaviour {
     public void Settings()
     {
         SceneManager.LoadScene("Settings");
+    }
+
+    public void Highscore()
+    {
+        SceneManager.LoadScene("HighScore");
     }
 }
