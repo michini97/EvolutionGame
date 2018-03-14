@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour {
     public int startWait;
     public bool stop;
     private Pauser pause;
+    private bool spawning = false;
 
     int randEnemy;
 
@@ -28,10 +29,16 @@ public class Spawner : MonoBehaviour {
         if (pause.IsActive())
         {
             stop = true;
+            spawning = false;
         }
         else
         {
             stop = false;
+            if (!spawning) {
+                StartCoroutine(waitSpawner());
+                spawning = true;
+            }
+            // StartCoroutine(waitSpawner());
         }
 
     }
