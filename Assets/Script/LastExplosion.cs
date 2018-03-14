@@ -37,7 +37,7 @@ public class LastExplosion : MonoBehaviour {
             Destroy(red);
             Destroy(grey);
             Destroy(pink);
-            endingText.text = "HI \r\n \r\n HI AGAIN ";
+            endingText.text = "As the planet evolved and civilization began to advance, war erupted \r\n and the destruction of the planet was eventually inevitable";
             //endingText.text = endingText.text.Replace("@", "@" + System.Environment.NewLine);
         }
     }
