@@ -102,6 +102,7 @@ public class LevelManager : MonoBehaviour {
     private void Start()
     {
         Text lvlText = GameObject.Find("LevelText").GetComponent<Text>();
+        lvlText.text = "Level " + currentLevel;
         colors = new string[] { "grey" , "blue" , "red" , "green" , "white" , "yellow" };
         levels = new string[] { "levelOne" , "levelTwo"};
 
@@ -247,38 +248,59 @@ public class LevelManager : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetKeyDown("a"))
+        {
+            EndLevel();
+        } else if (Input.GetKeyDown("1")) {
+            SceneManager.LoadScene(1);
+        } else if (Input.GetKeyDown("2")) {
+            SceneManager.LoadScene(2);
+        } else if (Input.GetKeyDown("3")) {
+            SceneManager.LoadScene(3);
+        } else if (Input.GetKeyDown("4")) {
+            SceneManager.LoadScene(4);
+        } else if (Input.GetKeyDown("5")) {
+            SceneManager.LoadScene(5);
+        }
+
         switch (currentLevel)
         {
             case 1:
                 if(white >= 5)
                 {
-                    SceneManager.LoadScene(currentLevel + 1);
+                    // SceneManager.LoadScene(currentLevel + 1);
+                    EndLevel();
                 }
                 break;
 
             case 2:
                 if(white >= 5 && grey >= 5)
                 {
-                    SceneManager.LoadScene(currentLevel + 1);
+                    //SceneManager.LoadScene(levels[currentLevel + 1], LoadSceneMode.Additive);
+                    // SceneManager.LoadScene(currentLevel + 1);
+                    EndLevel();
                 }
                 break;
             case 3:
                 if (white >= 5 && grey >= 5 && red >= 5)
                 {
-                    SceneManager.LoadScene(currentLevel + 1);
+                    // SceneManager.LoadScene(currentLevel + 1);
+                    EndLevel();
 
                 }
                 break;
             case 4:
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5)
                 {
-                    SceneManager.LoadScene(currentLevel + 1);
+                    // SceneManager.LoadScene(currentLevel + 1);
+                    EndLevel();
                 }
                 break;
             case 5:
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5)
                 {
-                    SceneManager.LoadScene(currentLevel + 1);
+                    // SceneManager.LoadScene(currentLevel + 1);
+                    EndLevel();
                 }
                 break;
             case 6:
@@ -320,9 +342,16 @@ public class LevelManager : MonoBehaviour {
         return LifeMax;
     }
 
-    void UpdateBar()
-    {
+    public int GetLevel() {
+        return currentLevel;
+    }
 
+    void EndLevel() {
+        Pauser pauser = GameObject.Find("Pause").GetComponent<Pauser>();
+        pauser.PauseGame(false);
+
+        Canvas endLvlScreen = GameObject.Find("EndLevelCanvas").GetComponent<Canvas>();
+        endLvlScreen.enabled = true;
     }
 }
 
