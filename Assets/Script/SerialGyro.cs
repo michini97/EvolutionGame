@@ -34,6 +34,7 @@ public class SerialGyro : MonoBehaviour {
         {
             serial.Write("c");
         }
+        serial.Write("c");
 
         // recalibrate the device.
         //serial.Write("r");
@@ -44,6 +45,11 @@ public class SerialGyro : MonoBehaviour {
         if(serial.IsOpen) {
             serial.Close();
         }
+    }
+
+    public bool Calibrate() {
+        serial.Write("c");
+        return true;
     }
 
     // Update is called once per frame
