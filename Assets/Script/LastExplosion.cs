@@ -12,6 +12,8 @@ public class LastExplosion : MonoBehaviour {
     public GameObject grey;
     public GameObject pink;
     public Text stopTimer;
+    public Text endingText;
+
     // Use this for initialization
     void Start () {
         StartCoroutine(Bombplanet());
@@ -20,6 +22,8 @@ public class LastExplosion : MonoBehaviour {
         red = GameObject.Find("RedRocket");
         grey = GameObject.Find("GreyRocket");
         pink = GameObject.Find("PinkRocket");
+        endingText.text = "";
+        
     }
 	
     IEnumerator Bombplanet() {
@@ -32,7 +36,9 @@ public class LastExplosion : MonoBehaviour {
             Destroy(green);
             Destroy(red);
             Destroy(grey);
-            Destroy(pink);            
-        }   
+            Destroy(pink);
+            endingText.text = "HI \r\n \r\n HI AGAIN ";
+            //endingText.text = endingText.text.Replace("@", "@" + System.Environment.NewLine);
+        }
     }
 }
