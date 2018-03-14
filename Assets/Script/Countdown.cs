@@ -51,6 +51,7 @@ public class Countdown : MonoBehaviour {
 		while (time > 0) {
 			txt.text = time.ToString();
 
+			Debug.Log("About to animate");
 			anim.Play("CountdownAnim");
 			Debug.Log(time);
 			yield return new WaitForSecondsRealtime(1.0f);

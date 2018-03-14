@@ -64,6 +64,8 @@ public class LevelManager : MonoBehaviour {
     private int LifeMax = 5;
 
     private static LevelManager lvlMan;
+    private Timer timeCounter;
+    private bool ended = false;
 
     public float GetAmount(string color)
     {
@@ -101,8 +103,10 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
+        timeCounter = GameObject.Find("GameUI").GetComponent<Timer>();
         Text lvlText = GameObject.Find("LevelText").GetComponent<Text>();
         lvlText.text = "Level " + currentLevel;
+
         colors = new string[] { "grey" , "blue" , "red" , "green" , "white" , "yellow" };
         levels = new string[] { "levelOne" , "levelTwo"};
 
@@ -352,6 +356,18 @@ public class LevelManager : MonoBehaviour {
 
         Canvas endLvlScreen = GameObject.Find("EndLevelCanvas").GetComponent<Canvas>();
         endLvlScreen.enabled = true;
+
+        if (!ended) {
+            timeCounter.EndTimer();
+
+            Text total = GameObject.Find("TotalTimeScore").GetComponent<Text>();
+            total.text = CubeInfo.cubeInfo.GetTime().ToString("f1");
+
+            Text level = GameObject.Find("LevelTimeScore").GetComponent<Text>();
+            level.text = timeCounter.GetTime().ToString("f1");
+        }
+
+        ended = true;
     }
 }
 
