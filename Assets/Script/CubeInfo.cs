@@ -6,6 +6,7 @@ public class CubeInfo: MonoBehaviour {
 
     public static CubeInfo cubeInfo;
     private Quaternion rotations;
+    private float totalTime = 0;
 
     public void Awake()
     {
@@ -28,6 +29,14 @@ public class CubeInfo: MonoBehaviour {
     public Quaternion getRotation()
     {
         return rotations;
+    }
+
+    public void UpdateTime(float newTime) {
+        totalTime += newTime;
+    }
+
+    public float GetTime() {
+        return totalTime;
     }
 	
 }

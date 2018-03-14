@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Pauser : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Pauser : MonoBehaviour {
     private Canvas canvas;
     private bool active = false;
     private int startScreen = 5;
+    private Timer timeCounter;
 
     // private void Awake()
     // {
@@ -27,6 +29,8 @@ public class Pauser : MonoBehaviour {
     private void Awake() {
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
+
+        timeCounter = GameObject.Find("GameUI").GetComponent<Timer>();
     }
 
     // Use this for initialization
@@ -54,13 +58,16 @@ public class Pauser : MonoBehaviour {
         canvas.enabled = false;
         active = false;
         Time.timeScale = 1.0f;
+        timeCounter.TurnOn();
     }
 
     public void PauseGame(bool canvasOn = true, float scale = 0.0f)
     {
+        // timer = GameObject.Find("TimerText").GetComponent<Text>();
         canvas.enabled = canvasOn;
         active = true;
         Time.timeScale = scale;
+        timeCounter.TurnOff();
     }
 
     public bool IsActive()
