@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour {
-
+    private MusicBackground music;
 
 	// Use this for initialization
 	void Start () {
+        music = GameObject.Find("Music").GetComponent<MusicBackground>();
 	
 	}
 	
@@ -18,11 +20,14 @@ public class ButtonScript : MonoBehaviour {
 
     public void Play()
     {
+        music.GameStart();
         SceneManager.LoadScene(1);
     }
 
     public void StartPage()
     {
+        music.StartPage();
+        GameObject.Destroy(GameObject.Find("GameMaster"));
         SceneManager.LoadScene(0);
     }
 
@@ -44,5 +49,26 @@ public class ButtonScript : MonoBehaviour {
     public void NextLevel() {
         LevelManager lvlman = GameObject.Find("Planet").GetComponent<LevelManager>();
         SceneManager.LoadScene(lvlman.GetLevel() + 1);
+    }
+
+    public void UpdateVolume() {
+        Scrollbar scrollbar = GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
+        music.SetVolume(scrollbar.value);
+    }
+
+    public void ToggleMusic() {
+        music.Toggle();
+    }
+
+    public void ToggleSFX() {
+        music.ToggleSFX();
+    }
+
+    // for option canvas
+    public void Done() {
+        Canvas options = GameObject.Find("Options").GetComponent<Canvas>();
+        Canvas pause = GameObject.Find("Pause").GetComponent<Canvas>();
+        options.enabled = false;
+        pause.enabled = true;
     }
 }

@@ -16,11 +16,17 @@ public class whiteCollider : MonoBehaviour
     public AudioClip sound;
     public AudioClip wrong;
     private float vol = 1.0f;
+    private MusicBackground music;
 
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
         src = GetComponent<AudioSource>();
+        
+        music = GameObject.Find("Music").GetComponent<MusicBackground>();
+        if (music) {
+            vol = music.GetVolume();
+        }
 
     }
 
@@ -35,7 +41,10 @@ public class whiteCollider : MonoBehaviour
                 lvlman.white++;
             }
 
-            src.PlayOneShot(sound, vol);
+            if (music && music.PlaySFX()) {
+                src.PlayOneShot(sound, vol);
+            }
+
 
             // Collider collider = col.gameObject.GetComponent<Collider>();
             // collider.enabled = false;
@@ -53,7 +62,9 @@ public class whiteCollider : MonoBehaviour
         }
         else if (col.gameObject.tag != gameObject.tag)
         {
-            src.PlayOneShot(wrong, vol);
+            if (music && music.PlaySFX()) {
+                src.PlayOneShot(wrong, vol);
+            }
             Destroy(col.gameObject);
         }
     }

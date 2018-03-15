@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class LastExplosion : MonoBehaviour {
 
@@ -12,8 +13,10 @@ public class LastExplosion : MonoBehaviour {
     public GameObject grey;
     public GameObject pink;
     public Text endingText;
+    private MusicBackground music;
     // Use this for initialization
     void Start () {
+        music = GameObject.Find("Music").GetComponent<MusicBackground>();
         StartCoroutine(Bombplanet());
         endingText.text = " ";
     }
@@ -35,6 +38,5 @@ public class LastExplosion : MonoBehaviour {
     public void EndingCredits()
     {
         endingText.text = "As the planet evolved and civilization began to advance, war erupted \r\n and the destruction of the planet was eventually inevitable.";
-
     }
 }
