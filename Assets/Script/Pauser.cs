@@ -8,6 +8,7 @@ public class Pauser : MonoBehaviour {
 
     // private static Pauser pause;
     private Canvas canvas;
+    private Canvas options;
     private bool active = false;
     private int startScreen = 5;
     private Timer timeCounter;
@@ -27,7 +28,9 @@ public class Pauser : MonoBehaviour {
     // }
 
     private void Awake() {
+        options = GameObject.Find("Options").GetComponent<Canvas>();
         canvas = GetComponent<Canvas>();
+        options.enabled = false;
         canvas.enabled = false;
 
         timeCounter = GameObject.Find("GameUI").GetComponent<Timer>();
@@ -80,5 +83,11 @@ public class Pauser : MonoBehaviour {
         GameObject.Destroy(GameObject.Find("GameMaster"));
         SceneManager.LoadScene("StartPage");
         ResumeGame();
+    }
+
+    public void Options() {
+        // Canvas options = GameObject.Find("Options").GetComponent<Canvas>();
+        canvas.enabled = false;
+        options.enabled = true;
     }
 }

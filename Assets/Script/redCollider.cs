@@ -16,11 +16,17 @@ public class redCollider : MonoBehaviour {
     public AudioClip sound;
     public AudioClip wrong;
     private float vol = 1.0f;
+    private MusicBackground music;
 
     void Start()
     {
         lvlman = something.GetComponent<LevelManager>();
         src = GetComponent<AudioSource>();
+        
+        music = GameObject.Find("Music").GetComponent<MusicBackground>();
+        if (music) {
+            vol = music.GetVolume();
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -34,7 +40,9 @@ public class redCollider : MonoBehaviour {
             }
             Debug.Log("red: " + lvlman.red);
 
-            src.PlayOneShot(sound, vol);
+            if (music && music.PlaySFX()) {
+                src.PlayOneShot(sound, vol);
+            }
 
             // ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
             // ps.Play();
@@ -47,7 +55,9 @@ public class redCollider : MonoBehaviour {
         }
         else if (col.gameObject.tag != gameObject.tag)
         {
-            src.PlayOneShot(wrong, vol);
+            if (music && music.PlaySFX()) {
+                src.PlayOneShot(wrong, vol);
+            }
             Destroy(col.gameObject);
         }
     }
