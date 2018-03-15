@@ -67,6 +67,8 @@ public class LevelManager : MonoBehaviour {
     private Timer timeCounter;
     private bool ended = false;
 
+    public Text narrative;
+
     public float GetAmount(string color)
     {
         float result = 0f;
@@ -267,8 +269,10 @@ public class LevelManager : MonoBehaviour {
             SceneManager.LoadScene(5);
         }
 
+        
         switch (currentLevel)
         {
+            
             case 1:
                 if(white >= 5)
                 {
@@ -283,14 +287,13 @@ public class LevelManager : MonoBehaviour {
                     //SceneManager.LoadScene(levels[currentLevel + 1], LoadSceneMode.Additive);
                     // SceneManager.LoadScene(currentLevel + 1);
                     EndLevel();
-                }
+                }   
                 break;
             case 3:
                 if (white >= 5 && grey >= 5 && red >= 5)
                 {
                     // SceneManager.LoadScene(currentLevel + 1);
                     EndLevel();
-
                 }
                 break;
             case 4:
@@ -304,7 +307,7 @@ public class LevelManager : MonoBehaviour {
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5)
                 {
                     // SceneManager.LoadScene(currentLevel + 1);
-                    EndLevel();
+                    EndLevel();              
                 }
                 break;
             case 6:
@@ -357,6 +360,7 @@ public class LevelManager : MonoBehaviour {
         Canvas endLvlScreen = GameObject.Find("EndLevelCanvas").GetComponent<Canvas>();
         endLvlScreen.enabled = true;
 
+        
         if (!ended) {
             timeCounter.EndTimer();
 
@@ -366,7 +370,6 @@ public class LevelManager : MonoBehaviour {
             Text level = GameObject.Find("LevelTimeScore").GetComponent<Text>();
             level.text = timeCounter.GetTime().ToString("f1");
         }
-
         ended = true;
     }
 }

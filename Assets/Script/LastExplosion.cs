@@ -11,15 +11,11 @@ public class LastExplosion : MonoBehaviour {
     public GameObject red;
     public GameObject grey;
     public GameObject pink;
-    public Text stopTimer;
+    public Text endingText;
     // Use this for initialization
     void Start () {
         StartCoroutine(Bombplanet());
-        planet = GameObject.Find("Planet");
-        green = GameObject.Find("GreenRocket");
-        red = GameObject.Find("RedRocket");
-        grey = GameObject.Find("GreyRocket");
-        pink = GameObject.Find("PinkRocket");
+        endingText.text = " ";
     }
 	
     IEnumerator Bombplanet() {
@@ -32,7 +28,13 @@ public class LastExplosion : MonoBehaviour {
             Destroy(green);
             Destroy(red);
             Destroy(grey);
-            Destroy(pink);            
+            Destroy(pink);
+            EndingCredits();
         }   
+    }
+    public void EndingCredits()
+    {
+        endingText.text = "As the planet evolved and civilization began to advance, war erupted \r\n and the destruction of the planet was eventually inevitable.";
+
     }
 }

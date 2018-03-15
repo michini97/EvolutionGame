@@ -10,8 +10,9 @@ public class Countdown : MonoBehaviour {
 	private bool active = true;
 	private Pauser pauser;
 
-	// for script
-	private string pickUpTxt = "Pick up controller";
+    // for script
+    
+    private string pickUpTxt = "Pick up controller";
 	private Animation anim;
 
 	// Use this for initialization
