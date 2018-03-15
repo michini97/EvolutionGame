@@ -63,7 +63,16 @@ public class MusicBackground : MonoBehaviour {
         src.Play();
     }
 
+    public void StartPage() {
+        src.clip = startMusic;
+        src.Play();
+    }
+
     public float GetVolume() {
-        return volume;
+        return src.volume;
+    }
+
+    public bool IsMusicPlaying() {
+        return !src.mute;
     }
 }

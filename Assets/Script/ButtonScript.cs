@@ -26,6 +26,8 @@ public class ButtonScript : MonoBehaviour {
 
     public void StartPage()
     {
+        music.StartPage();
+        GameObject.Destroy(GameObject.Find("GameMaster"));
         SceneManager.LoadScene(0);
     }
 

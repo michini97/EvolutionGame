@@ -67,6 +67,12 @@ public class LevelManager : MonoBehaviour {
     private Timer timeCounter;
     private bool ended = false;
 
+    private string[] endTxt = {"Gasses from the solar nebula densed through gravitational pull and created a solid form",
+        "The collisions against the planet's surface has made volcanoes erupt",
+        "The planet cools down and reaches a temperature where liquid water can exist",
+        "As the planet is filled with water, nature has started to develop in the form of trees and bushes",
+        "As your planet is filled with resources, life and civilization has started to develop"};
+
     public float GetAmount(string color)
     {
         float result = 0f;
@@ -254,7 +260,11 @@ public class LevelManager : MonoBehaviour {
     {
         if (Input.GetKeyDown("a"))
         {
-            EndLevel();
+            if (currentLevel == 6) {
+                SceneManager.LoadScene(currentLevel + 1);
+                } else {
+                    EndLevel();
+                }
         } else if (Input.GetKeyDown("1")) {
             SceneManager.LoadScene(1);
         } else if (Input.GetKeyDown("2")) {
@@ -265,10 +275,13 @@ public class LevelManager : MonoBehaviour {
             SceneManager.LoadScene(4);
         } else if (Input.GetKeyDown("5")) {
             SceneManager.LoadScene(5);
+        } else if (Input.GetKeyDown("6")) {
+            SceneManager.LoadScene(6);
         }
-
+        
         switch (currentLevel)
         {
+            
             case 1:
                 if(white >= 5)
                 {
@@ -283,14 +296,13 @@ public class LevelManager : MonoBehaviour {
                     //SceneManager.LoadScene(levels[currentLevel + 1], LoadSceneMode.Additive);
                     // SceneManager.LoadScene(currentLevel + 1);
                     EndLevel();
-                }
+                }   
                 break;
             case 3:
                 if (white >= 5 && grey >= 5 && red >= 5)
                 {
                     // SceneManager.LoadScene(currentLevel + 1);
                     EndLevel();
-
                 }
                 break;
             case 4:
@@ -304,7 +316,7 @@ public class LevelManager : MonoBehaviour {
                 if (white >= 5 && grey >= 5 && red >= 5 && blue >= 5 && green >= 5)
                 {
                     // SceneManager.LoadScene(currentLevel + 1);
-                    EndLevel();
+                    EndLevel();              
                 }
                 break;
             case 6:
@@ -357,6 +369,7 @@ public class LevelManager : MonoBehaviour {
         Canvas endLvlScreen = GameObject.Find("EndLevelCanvas").GetComponent<Canvas>();
         endLvlScreen.enabled = true;
 
+        
         if (!ended) {
             timeCounter.EndTimer();
 
@@ -365,8 +378,10 @@ public class LevelManager : MonoBehaviour {
 
             Text level = GameObject.Find("LevelTimeScore").GetComponent<Text>();
             level.text = timeCounter.GetTime().ToString("f1");
-        }
 
+            Text narrative = GameObject.Find("Narrative").GetComponent<Text>();
+            narrative.text = endTxt[currentLevel - 1];
+        }
         ended = true;
     }
 }
